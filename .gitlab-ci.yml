@@ -1,0 +1,24 @@
+stages:
+    - test
+    - build
+
+test:
+    stage: test
+    image: python:3.8-alpine
+    script:
+        - echo "Testing"
+        - pip3 install --upgrade pip
+        - pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
+        - pip3 install coverage
+        - coverage run -m unittest MyEventManagerTest.py
+        - coverage report -m
+
+build:
+    stage: build
+    image: python:3.8-alpine
+    script: 
+        - echo "Building"
+        - pip3 install --upgrade pip
+        - pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
+        - python3 MyEventManager.py
+

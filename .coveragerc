@@ -1,0 +1,16 @@
+# additions to control coverage.py
+[run]
+branch = True
+
+[report]
+exclude_lines =
+      # UI runner code not covered
+      def main
+
+      # Non runnable code
+      if __name__ == "__main__":
+
+show_missing = True
+
+[html]
+title = "FIT2107 Assignment 2 : MyEventManager Coverage Report"
